@@ -19,24 +19,25 @@ def home():
 @app.post("/detect")
 async def detect_emotion(file: UploadFile = File(...)):
     try:
-        # Read image
         image_bytes = await file.read()
         nparr = np.frombuffer(image_bytes, np.uint8)
         img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
-        # Analyze using DeepFace
         result = DeepFace.analyze(
             img,
             actions=["emotion"],
             enforce_detection=False
         )
 
-        emotion = result["dominant_emotion"]
+        # DeepFace returns result inside a list → use index 0
+        emotion = result[0]["dominant_emotion"]
 
         return {"emotion": emotion}
 
     except Exception as e:
         return {"error": str(e)}
 
+
 if __name__ == "__main__":
     uvicorn.run("server:app", host="0.0.0.0", port=8000)
+
