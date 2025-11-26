@@ -1,6 +1,14 @@
 fastapi
 uvicorn
 numpy
-opencv-python-headless
-deepface
-tensorflow
+opencv-python-headless==4.8.1.78
+
+# DeepFace requirements
+deepface==0.0.79
+
+# TensorFlow compatible with DeepFace
+tensorflow==2.12.0
+tf-keras
+
+# Other dependencies
+pillow
