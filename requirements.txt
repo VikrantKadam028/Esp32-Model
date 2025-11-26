@@ -3,12 +3,14 @@ uvicorn
 numpy
 opencv-python-headless==4.8.1.78
 
-# DeepFace requirements
+# DeepFace stable
 deepface==0.0.79
 
-# TensorFlow compatible with DeepFace
+# TensorFlow compatible
 tensorflow==2.12.0
 tf-keras
 
-# Other dependencies
+# Needed for UploadFile (important)
+python-multipart
+
 pillow
